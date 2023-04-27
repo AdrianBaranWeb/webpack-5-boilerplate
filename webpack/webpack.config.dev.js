@@ -1,17 +1,7 @@
 const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const {CleanWebpackPlugin} = require('clean-webpack-plugin');
 
-// This array should contain names of all html files
-const htmlPages = ['index'];
-const multipleHtmlPlugins = htmlPages.map((name) => {
-	return new HtmlWebpackPlugin({
-		template: `./src/${name}.html`, // relative path to the HTML files
-		filename: `${name}.html`, // output HTML files
-		chunks: [`${name}`], // respective JS files
-	});
-});
+const {commonLoaders} = require('./loaders')
+const {commonPlugins} = require('./plugins')
 
 module.exports = {
 	mode: 'development',
@@ -19,10 +9,7 @@ module.exports = {
 	output: {
 		path: path.resolve(__dirname, '../dist'),
 		filename: '[name].bundle.js',
-		// This line doesn't work correctly right now
-		// that is why use CleanWebpackPlugin
-		// If this will be fixed CleanWebpackPlugin can be removed
-		clean: true,
+		clean: true, // This line doesn't work correctly right now, that is why use CleanWebpackPlugin.
 	},
 	devServer: {
 		static: {
@@ -36,25 +23,7 @@ module.exports = {
 		},
 	},
 	module: {
-		rules: [
-			{test: /\.html$/, use: ['html-loader']},
-			{
-				test: /\.css$/,
-				// You can also use this config:
-				// use: ['style-loader', 'css-loader'],
-				use: [MiniCssExtractPlugin.loader, 'css-loader'],
-			},
-			{
-				test: /\.scss$/,
-				// You can also use this config:
-				// use: ['style-loader', 'css-loader', 'sass-loader'],
-				use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'],
-			},
-		],
+		rules: commonLoaders,
 	},
-	plugins: [
-		new CleanWebpackPlugin(),
-		new MiniCssExtractPlugin(),
-		...multipleHtmlPlugins,
-	],
+	plugins: commonPlugins,
 };
