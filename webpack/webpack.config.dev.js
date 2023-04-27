@@ -1,6 +1,17 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const {CleanWebpackPlugin} = require('clean-webpack-plugin');
+
+// This array should contain names of all html files
+const htmlPages = ['index'];
+const multipleHtmlPlugins = htmlPages.map((name) => {
+	return new HtmlWebpackPlugin({
+		template: `./src/${name}.html`, // relative path to the HTML files
+		filename: `${name}.html`, // output HTML files
+		chunks: [`${name}`], // respective JS files
+	});
+});
 
 module.exports = {
 	mode: 'development',
@@ -8,17 +19,25 @@ module.exports = {
 	output: {
 		path: path.resolve(__dirname, '../dist'),
 		filename: '[name].bundle.js',
-    clean: true,
+		// This line doesn't work correctly right now
+		// that is why use CleanWebpackPlugin
+		// If this will be fixed CleanWebpackPlugin can be removed
+		clean: true,
 	},
-  devServer: {
-    static: {
-      directory: path.join(__dirname, '../dist'),
-    },
-    compress: true,
-    port: 9000,
-  },
+	devServer: {
+		static: {
+			directory: path.join(__dirname, '../dist'),
+		},
+		compress: true,
+		port: 9000,
+		hot: true,
+		devMiddleware: {
+			writeToDisk: true,
+		},
+	},
 	module: {
 		rules: [
+			{test: /\.html$/, use: ['html-loader']},
 			{
 				test: /\.css$/,
 				// You can also use this config:
@@ -34,7 +53,8 @@ module.exports = {
 		],
 	},
 	plugins: [
+		new CleanWebpackPlugin(),
 		new MiniCssExtractPlugin(),
-		new HtmlWebpackPlugin({template: './src/index.html'}),
+		...multipleHtmlPlugins,
 	],
 };
