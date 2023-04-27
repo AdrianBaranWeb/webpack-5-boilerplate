@@ -8,8 +8,9 @@ module.exports = {
 	entry: './src/js/index.js',
 	output: {
 		path: path.resolve(__dirname, '../dist'),
-		filename: '[name].bundle.js',
+		filename: 'bundle.js',
 		clean: true, // This line doesn't work correctly right now, that is why use CleanWebpackPlugin.
+		assetModuleFilename: 'assets/[name][ext]'
 	},
 	devServer: {
 		static: {
