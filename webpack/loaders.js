@@ -20,7 +20,7 @@ const commonLoaders = [
 		type: 'asset/inline',
 	},
 	{
-		test: /\.(png|jpg|jpeg|gif)$/i,
+		test: /\.(png|jpg|jpeg|gif|mov|mp4)$/i,
 		type: 'asset/resource',
 	},
 ];
