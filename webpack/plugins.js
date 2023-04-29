@@ -12,7 +12,7 @@ const multipleHtmlPlugins = htmlPages.map((name) => {
 });
 
 const commonPlugins = [
-	new CleanWebpackPlugin({keep: /\.png$/}),
+	new CleanWebpackPlugin(),
 	new MiniCssExtractPlugin(),
 	...multipleHtmlPlugins,
 ];

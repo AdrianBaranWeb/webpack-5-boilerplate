@@ -6,14 +6,19 @@ const commonLoaders = [
 		test: /\.css$/,
 		// You can also use this config:
 		// use: ['style-loader', 'css-loader'],
-		use: [MiniCssExtractPlugin.loader, 'css-loader'],
+		use: [MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader'],
 	},
 	{
 		test: /\.scss$/,
 		// You can also use this config:
 		// use: ['style-loader', 'css-loader', 'sass-loader'],
-		use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'],
-    sideEffects: true
+		use: [
+			MiniCssExtractPlugin.loader,
+			'css-loader',
+			'postcss-loader',
+			'sass-loader',
+		],
+		sideEffects: true,
 	},
 	{
 		test: /\.svg$/i,
@@ -21,10 +26,16 @@ const commonLoaders = [
 	},
 	{
 		test: /\.(png|jpg|jpeg|gif|mov|mp4)$/i,
+		exclude: /\.svg$/i,
 		type: 'asset/resource',
 	},
 ];
 
+const prodLoaders = {
+	...commonLoaders,
+};
+
 module.exports = {
 	commonLoaders,
+	prodLoaders,
 };
