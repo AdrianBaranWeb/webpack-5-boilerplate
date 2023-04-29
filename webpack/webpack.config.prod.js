@@ -2,7 +2,7 @@ const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 
 const path = require('path');
 const {prodLoaders} = require('./loaders');
-const {commonPlugins} = require('./plugins');
+const {prodPlugins} = require('./plugins');
 
 module.exports = {
 	mode: 'production',
@@ -30,5 +30,5 @@ module.exports = {
 	module: {
 		rules: prodLoaders,
 	},
-	plugins: commonPlugins,
+	plugins: prodPlugins,
 };

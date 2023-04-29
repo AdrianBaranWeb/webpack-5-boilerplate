@@ -31,9 +31,9 @@ const commonLoaders = [
 	},
 ];
 
-const prodLoaders = {
+const prodLoaders = [
 	...commonLoaders,
-};
+];
 
 module.exports = {
 	commonLoaders,

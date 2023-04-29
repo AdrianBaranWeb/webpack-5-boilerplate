@@ -1,6 +1,9 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const {CleanWebpackPlugin} = require('clean-webpack-plugin');
+const {PurgeCSSPlugin} = require('purgecss-webpack-plugin');
+const glob = require('glob');
+const path = require('path');
 
 // This array should contain names of all html files
 const htmlPages = ['index'];
@@ -17,6 +20,14 @@ const commonPlugins = [
 	...multipleHtmlPlugins,
 ];
 
+const prodPlugins = [
+	...commonPlugins,
+	new PurgeCSSPlugin({
+		paths: glob.sync(`${path.join(__dirname, '../src')}/**/*`, {nodir: true}),
+	}),
+];
+
 module.exports = {
 	commonPlugins,
+	prodPlugins
 };
