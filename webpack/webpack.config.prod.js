@@ -7,7 +7,7 @@ const {prodPlugins} = require('./plugins');
 
 module.exports = {
 	mode: 'production',
-	entry: './src/js/index.js',
+	entry: './src/js/index.ts',
 	output: {
 		path: path.resolve(__dirname, '../dist'),
 		filename: 'bundle-[contenthash:8].js',
@@ -65,7 +65,7 @@ module.exports = {
 									],
 								},
 							],
-							['imagemin-webp', { quality: 75 }],
+							['imagemin-webp', {quality: 75}],
 						],
 					},
 				},

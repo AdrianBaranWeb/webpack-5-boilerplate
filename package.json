@@ -4,9 +4,10 @@
 	"description": "",
 	"main": "index.js",
 	"scripts": {
-		"test": "echo \"Error: no test specified\" && exit 1",
-		"start": "cross-env BABEL_ENV=dev webpack serve --config ./webpack/webpack.config.dev.js --hot",
-		"build": "cross-env BABEL_ENV=production webpack --config ./webpack/webpack.config.prod.js"
+		"start": "cross-env NODE_ENV=dev webpack serve --config ./webpack/webpack.config.dev.js --hot",
+		"build": "cross-env NODE_ENV=production webpack --config ./webpack/webpack.config.prod.js",
+		"serve": "cross-env NODE_ENV=production webpack serve --config ./webpack/webpack.config.prod.js",
+		"typecheck": "tsc --noEmit"
 	},
 	"author": "",
 	"license": "ISC",
@@ -20,6 +21,7 @@
 	"devDependencies": {
 		"@babel/core": "^7.21.5",
 		"@babel/preset-env": "^7.21.5",
+		"@babel/preset-typescript": "^7.21.5",
 		"autoprefixer": "^10.4.14",
 		"babel-loader": "^9.1.2",
 		"clean-webpack-plugin": "^4.0.0",
@@ -42,6 +44,7 @@
 		"sass-loader": "^13.2.2",
 		"sharp": "^0.32.1",
 		"style-loader": "^3.3.2",
+		"typescript": "^5.0.4",
 		"webpack-dev-server": "^4.13.3"
 	}
 }
