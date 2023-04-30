@@ -85,11 +85,17 @@ module.exports = {
 			}),
 		],
 		splitChunks: {
+			chunks: 'all',
+			maxSize: Infinity,
+			minSize: 0,
 			cacheGroups: {
 				nodeModules: {
 					test: /[\\/]node_modules[\\/]/i,
 					chunks: 'initial',
-					name: 'node-modules'
+					name(module){
+						const name = module.context.match(/[\\/]node_modules[\\/](.*?)([\\/]|$)/)[1];
+						return name;
+					},
 				},
 			},
 		},
