@@ -92,10 +92,19 @@ module.exports = {
 				nodeModules: {
 					test: /[\\/]node_modules[\\/]/i,
 					chunks: 'initial',
-					name(module){
-						const name = module.context.match(/[\\/]node_modules[\\/](.*?)([\\/]|$)/)[1];
+					name(module) {
+						const name = module.context.match(
+							/[\\/]node_modules[\\/](.*?)([\\/]|$)/
+						)[1];
 						return name;
 					},
+				},
+				async: {
+					test: /[\\/]node_modules[\\/]/i,
+					chunks: 'async',
+					name(module, chunks) {
+						return chunks.map(({name}) => name).join('-')
+					}
 				},
 			},
 		},
