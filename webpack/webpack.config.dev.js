@@ -1,6 +1,6 @@
 const path = require('path');
 
-const {commonLoaders} = require('./loaders')
+const {devLoaders} = require('./loaders')
 const {commonPlugins} = require('./plugins')
 
 module.exports = {
@@ -24,7 +24,7 @@ module.exports = {
 		},
 	},
 	module: {
-		rules: commonLoaders,
+		rules: devLoaders,
 	},
 	plugins: commonPlugins,
 };

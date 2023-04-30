@@ -2,6 +2,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const {CleanWebpackPlugin} = require('clean-webpack-plugin');
 const {PurgeCSSPlugin} = require('purgecss-webpack-plugin');
+// const CopyPlugin = require('copy-webpack-plugin');
 const glob = require('glob');
 const path = require('path');
 
@@ -25,9 +26,11 @@ const prodPlugins = [
 	new PurgeCSSPlugin({
 		paths: glob.sync(`${path.join(__dirname, '../src')}/**/*`, {nodir: true}),
 	}),
+	// Use if images come frome API
+	// new CopyPlugin(),
 ];
 
 module.exports = {
 	commonPlugins,
-	prodPlugins
+	prodPlugins,
 };

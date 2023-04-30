@@ -6,7 +6,7 @@
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1",
 		"start": "webpack serve --config ./webpack/webpack.config.dev.js --hot",
-		"build": "webpack serve --config ./webpack/webpack.config.prod.js"
+		"build": "webpack --config ./webpack/webpack.config.prod.js"
 	},
 	"author": "",
 	"license": "ISC",
@@ -19,14 +19,23 @@
 	"devDependencies": {
 		"autoprefixer": "^10.4.14",
 		"clean-webpack-plugin": "^4.0.0",
+		"copy-webpack-plugin": "^11.0.0",
 		"css-loader": "^6.7.3",
 		"css-minimizer-webpack-plugin": "^5.0.0",
 		"html-loader": "^4.2.0",
+		"image-minimizer-webpack-plugin": "^3.8.2",
+		"imagemin": "^8.0.1",
+		"imagemin-gifsicle": "^7.0.0",
+		"imagemin-mozjpeg": "^10.0.0",
+		"imagemin-pngquant": "^9.0.2",
+		"imagemin-svgo": "^10.0.1",
+		"imagemin-webp": "^8.0.0",
 		"mini-css-extract-plugin": "^2.7.5",
 		"postcss": "^8.4.23",
 		"postcss-loader": "^7.3.0",
 		"purgecss-webpack-plugin": "^5.0.0",
 		"sass-loader": "^13.2.2",
+		"sharp": "^0.32.1",
 		"style-loader": "^3.3.2",
 		"webpack-dev-server": "^4.13.3"
 	}

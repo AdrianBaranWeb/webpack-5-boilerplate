@@ -24,18 +24,21 @@ const commonLoaders = [
 		test: /\.svg$/i,
 		type: 'asset/inline',
 	},
+];
+
+const devLoaders = [
+	...commonLoaders,
 	{
-		test: /\.(png|jpg|jpeg|gif|mov|mp4)$/i,
+		test: /\.(png|jpg|jpeg|gif)$/i,
 		exclude: /\.svg$/i,
 		type: 'asset/resource',
 	},
 ];
 
-const prodLoaders = [
-	...commonLoaders,
-];
+const prodLoaders = [...commonLoaders];
 
 module.exports = {
 	commonLoaders,
 	prodLoaders,
+	devLoaders,
 };
