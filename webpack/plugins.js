@@ -2,6 +2,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const {CleanWebpackPlugin} = require('clean-webpack-plugin');
 const {PurgeCSSPlugin} = require('purgecss-webpack-plugin');
+// const CompressionPlugin = require('compression-webpack-plugin');
 // const CopyPlugin = require('copy-webpack-plugin');
 const glob = require('glob');
 const path = require('path');
@@ -28,6 +29,13 @@ const prodPlugins = [
 	}),
 	// Use if images come frome API
 	// new CopyPlugin(),
+	// To use this files you need to configure server
+	// new CompressionPlugin({
+	// 	filename: '[path][base].br',
+	// 	algorithm: 'brotliCompress',
+	// 	test: /\.(js|ts|html|css)$/,
+	// 	compressionOptions: {level: 11},
+	// }),
 ];
 
 module.exports = {
