@@ -1,6 +1,11 @@
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 const commonLoaders = [
+	{
+		test: /\.js$/,
+		exclude: /node_modules/,
+		use: [{loader: 'babel-loader', options: {}}],
+	},
 	{test: /\.html$/, loader: 'html-loader'},
 	{
 		test: /\.css$/,
