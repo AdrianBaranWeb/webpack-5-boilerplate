@@ -21,7 +21,18 @@ const commonLoaders = [
 			MiniCssExtractPlugin.loader,
 			'css-loader',
 			'postcss-loader',
-			'sass-loader',
+			{
+				loader: 'resolve-url-loader',
+				options: {
+					sourceMap: true,
+				},
+			},
+			{
+				loader: 'sass-loader',
+				options: {
+					sourceMap: true,
+				},
+			},
 		],
 		sideEffects: true,
 	},

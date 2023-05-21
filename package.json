@@ -1,6 +1,6 @@
 {
 	"name": "webpack",
-	"version": "1.0.0",
+	"version": "1.1.0",
 	"description": "Webpack 5 configuration",
 	"main": "index.js",
 	"scripts": {
@@ -43,6 +43,7 @@
 		"postcss": "8.4.23",
 		"postcss-loader": "7.3.0",
 		"purgecss-webpack-plugin": "5.0.0",
+		"resolve-url-loader": "^5.0.0",
 		"sass-loader": "13.2.2",
 		"sharp": "0.32.1",
 		"style-loader": "3.3.2",
